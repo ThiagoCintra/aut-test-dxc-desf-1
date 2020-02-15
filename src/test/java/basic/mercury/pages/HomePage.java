@@ -1,5 +1,6 @@
 package basic.mercury.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,13 +15,87 @@ public class HomePage {
 	public HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	@FindBy(name = "fromPort")
-	WebElement select;
-	Select s = new Select(select);
-	
+	WebElement selectfromPort;
+
+	@FindBy(name = "toPort")
+	WebElement selectToPort;
+
+	@FindBy(name = "fromMonth")
+	WebElement selecDateOnMonth;
+
+	@FindBy(name = "fromDay")
+	WebElement selecDateOnDay;
+
+	@FindBy(name = "toMonth")
+	WebElement selecDateReturnM;
+
+	@FindBy(name = "toDay")
+	WebElement selecDateReturnD;
+
+	@FindBy(xpath = "//input[contains(@value,'Coach')]")
+	WebElement economyClass;
+
+	@FindBy(xpath = "//input[contains(@value,'Business')]")
+	WebElement busisnesClass;
+
+	@FindBy(xpath = "//input[contains(@value,'First')]")
+	WebElement firstClass;
+
+	@FindBy(name = "passCount")
+	WebElement numberPassengers;
+
+	@FindBy(name = "findFlights")
+	WebElement btnContinue;
+
 	public void selectDepartingFrom(String value) {
-		Helper.elemento_existe(select, 10);
-		s.selectByValue(value);
+		Helper.elemento_existe(selectfromPort, 10);
+		new Select(selectfromPort).selectByValue(value);
+	}
+
+	public void selectToPort(String value) {
+		Helper.elemento_existe(selectToPort, 10);
+		new Select(selectToPort).selectByValue(value);
+	}
+
+	public void selecDateOn(String valueM, String valueD) {
+		Helper.elemento_existe(selecDateOnMonth, 10);
+		new Select(selecDateOnMonth).selectByValue(valueM);
+		Helper.elemento_existe(selecDateOnDay, 10);
+		new Select(selecDateOnDay).selectByValue(valueD);
+	}
+
+	public void selectReturnDate(String valueM, String valueD) {
+		Helper.elemento_existe(selecDateReturnM, 10);
+		new Select(selecDateReturnM).selectByValue(valueM);
+		Helper.elemento_existe(selecDateReturnD, 10);
+		new Select(selecDateReturnD).selectByValue(valueD);
+
+	}
+
+	public void serviceClassEconomy() {
+		Helper.elemento_existe(economyClass, 10);
+		economyClass.click();
+	}
+
+	public void serviceClassBusisne() {
+		Helper.elemento_existe(busisnesClass, 10);
+		firstClass.click();
+	}
+
+	public void serviceClassFisrt() {
+		Helper.elemento_existe(firstClass, 10);
+		firstClass.click();
+	}
+
+	public void numberOfPassengers(String value) {
+		Helper.elemento_existe(numberPassengers, 10);
+		new Select(numberPassengers).selectByValue(value);
+	}
+
+	public void clickBtnContinue() {
+		Helper.elemento_existe(btnContinue, 10);
+		btnContinue.click();
 	}
 }
