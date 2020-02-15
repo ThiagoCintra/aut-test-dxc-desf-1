@@ -44,6 +44,7 @@ public class ReservaSteps {
 		homePage.serviceClassEconomy();
 		homePage.clickBtnContinue();
 		vooPage.selectFligth("Blue Skies Airlines$361$271$7:10");
+		vooPage.clickBtnContinue();
 		bookPage.sendKeyFistName("Test");
 		bookPage.sendKeyLastName("teste");
 		bookPage.sendKeyNumberCard("6666666666666666");
@@ -53,7 +54,7 @@ public class ReservaSteps {
 	@Então("devo ter realizado reserva de um ticket")
 	public void devo_visualizar_a_mensagem_login_e_senha_obrigatório() throws IOException, InterruptedException {
 		assertEquals(confirmationPage.validTextPage(), "Your itinerary has been booked!");
-		screenshot.takeScreenShot("Validando Page");
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package basic.mercury.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +13,8 @@ import basic.mercury.utils.Helper;
 import basic.mercury.utils.screenshot.TakeScreenshot;
 
 public class HomePage {
-
+	TakeScreenshot screenshot = new TakeScreenshot();
+	
 	public HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -74,9 +77,10 @@ public class HomePage {
 
 	}
 
-	public void serviceClassEconomy() {
+	public void serviceClassEconomy() throws IOException {
 		Helper.elemento_existe(economyClass, 10);
 		economyClass.click();
+		screenshot.takeScreenShot("dados preenchidos");
 	}
 
 	public void serviceClassBusisne() {
@@ -89,9 +93,10 @@ public class HomePage {
 		firstClass.click();
 	}
 
-	public void numberOfPassengers(String value) {
+	public void numberOfPassengers(String value) throws IOException {
 		Helper.elemento_existe(numberPassengers, 10);
 		new Select(numberPassengers).selectByValue(value);
+		screenshot.takeScreenShot("Dados Iniciais");
 	}
 
 	public void clickBtnContinue() {

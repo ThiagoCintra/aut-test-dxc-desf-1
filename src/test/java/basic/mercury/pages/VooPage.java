@@ -1,5 +1,7 @@
 package basic.mercury.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +15,7 @@ import basic.mercury.utils.screenshot.TakeScreenshot;
 
 public class VooPage {
 	WebDriver driver;
+	TakeScreenshot screenshot = new TakeScreenshot();
 	
 	public VooPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -25,10 +28,11 @@ public class VooPage {
 	WebElement btnContinue;
 
 
-	public void selectFligth(String value) {
+	public void selectFligth(String value) throws IOException {
 		voo = driver.findElement(By.xpath("(//input[contains(@value,'"+value+"')])"));
 		Helper.elemento_existe(voo, 10);
 		voo.click();
+		screenshot.takeScreenShot("voo selecinado " + value);
 	}
 	
 	public void clickBtnContinue() {
